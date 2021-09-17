@@ -11,6 +11,7 @@ interface MainViewModelImpl {
 
     fun plusNumber()
     fun minusNumber()
+    fun resetNumber()
 }
 
 class MainViewModel() : MainViewModelImpl, ViewModel() {
@@ -32,6 +33,11 @@ class MainViewModel() : MainViewModelImpl, ViewModel() {
     override fun minusNumber() {
         _number.value = _number.value?.minus(1)
         Log.d(TAG, "minus number : ${_number.value}")
+    }
+
+    override fun resetNumber() {
+        _number.value = 0
+        Log.d(TAG, "number reset!!!")
     }
 
     override fun onCleared() {
