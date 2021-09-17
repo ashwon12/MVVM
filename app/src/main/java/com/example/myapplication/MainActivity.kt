@@ -36,10 +36,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener  {
             tvNumber.text = it.toString()
         })
 
+        btnPlus.setOnClickListener(this)
+        btnMinus.setOnClickListener(this)
+        btnReset.setOnClickListener(this)
     }
 
-    override fun onClick(p0: View?) {
-
+    override fun onClick(view: View?) {
+        when(view){
+            btnPlus -> mainViewModel.plusNumber()
+            btnMinus-> mainViewModel.minusNumber()
+        }
     }
 
 }
