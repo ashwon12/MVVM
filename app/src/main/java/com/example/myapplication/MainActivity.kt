@@ -33,28 +33,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        mainViewModel.onLifeCycle("start")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        mainViewModel.plusNumber()
-        mainViewModel.onLifeCycle("resume")
-    }
-
-    override fun onPause() {
-        mainViewModel.onLifeCycle("pause")
-        super.onPause()
-    }
-
-    override fun onDestroy() {
-        mainViewModel.onLifeCycle("destroy")
-        mainViewModel.plusNumber()
-        super.onDestroy()
-    }
-
     private fun btnClick() {
         mainViewModel.plusNumber()
         Toast.makeText(applicationContext, mainViewModel.printNumber(), Toast.LENGTH_SHORT).show()
