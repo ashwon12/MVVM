@@ -6,41 +6,36 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-interface MainViewModel {
-    val a: LiveData<Int>
-    val b: LiveData<ArrayList<String>>
+interface MainViewModelImpl {
+    val number: LiveData<Int>
 
     fun plusNumber()
-    fun printNumber(): String
-    fun onLifeCycle(state: String)
+    fun minusNumber()
 }
 
-class MainViewModelImpl(val name: String) : MainViewModel, ViewModel() {
-    private val _a: MutableLiveData<Int> = MutableLiveData(0)
-    override val a: LiveData<Int>
-        get() = _a
+class MainViewModel() : MainViewModelImpl, ViewModel() {
 
-    private val _b: MutableLiveData<ArrayList<String>> = MutableLiveData(ArrayList())
-    override val b: LiveData<ArrayList<String>>
-        get() = _b
+    companion object{
+        const val TAG : String = "로그"
+    }
+
+    private val _number: MutableLiveData<Int> = MutableLiveData(0) // 내부에서 사용하는 값
+    override val number: LiveData<Int>
+        get() = _number
+
 
     override fun plusNumber() {
-        _a.value = (a.value ?: 0) + 1
-        Log.d("ehdghks", "plustNumber : ${_a.value}")
+        _number.value = _number.value?.plus(1)
+        Log.d(TAG, "plus number : ${_number.value}")
     }
 
-    override fun printNumber(): String {
-        return (a.value ?: 0).toString()
-    }
-
-    override fun onLifeCycle(state: String) {
-        val temp = b.value
-        temp?.add(state)
-        _b.value = temp
+    override fun minusNumber() {
+        _number.value = _number.value?.minus(1)
+        Log.d(TAG, "minus number : ${_number.value}")
     }
 
     override fun onCleared() {
         super.onCleared()
-        Log.d("ehdghks", "onCleared : ${_a.value}")
+        Log.d(TAG, "ViewModel End")
     }
 }
