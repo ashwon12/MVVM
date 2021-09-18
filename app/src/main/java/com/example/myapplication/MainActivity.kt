@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 class MainActivity : AppCompatActivity(), View.OnClickListener  {
 
     companion object{
-        const val TAG : String = "로그"
+        const val TAG : String = "MainActivity"
     }
 
     private lateinit var mainViewModel : MainViewModel

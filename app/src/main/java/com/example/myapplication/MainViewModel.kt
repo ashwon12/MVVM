@@ -17,7 +17,7 @@ interface MainViewModelImpl {
 class MainViewModel() : MainViewModelImpl, ViewModel() {
 
     companion object{
-        const val TAG : String = "로그"
+        const val TAG : String = "MainViewModel"
     }
 
     private val _number: MutableLiveData<Int> = MutableLiveData(0) // 내부에서 사용하는 값

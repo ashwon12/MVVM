@@ -21,7 +21,7 @@
         android:id="@+id/btn_reset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="초기화"
+        android:text="@string/btn_reset"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_minus"
         app:layout_constraintTop_toTopOf="@+id/btn_minus"
@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="빼기"
+        android:text="@string/btn_minus"
         app:layout_constraintEnd_toStartOf="@+id/btn_reset"
         app:layout_constraintStart_toEndOf="@+id/btn_plus"
         app:layout_constraintTop_toBottomOf="@+id/tv_number" />
@@ -41,7 +41,7 @@
         android:id="@+id/btn_plus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="더하기"
+        android:text="@string/btn_plus"
         app:layout_constraintEnd_toStartOf="@+id/btn_minus"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btn_minus" />
