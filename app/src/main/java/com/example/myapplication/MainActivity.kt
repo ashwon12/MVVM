@@ -8,45 +8,24 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.myapplication.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), View.OnClickListener  {
-
-    companion object{
-        const val TAG : String = "MainActivity"
-    }
+class MainActivity : AppCompatActivity(){
 
     private lateinit var mainViewModel : MainViewModel
-    private val btnPlus : Button by lazy { findViewById<Button>(R.id.btn_plus)}
-    private val btnMinus : Button by lazy { findViewById(R.id.btn_minus)}
-    private val btnReset : Button by lazy { findViewById(R.id.btn_reset) }
-    private val tvNumber : TextView by lazy { findViewById(R.id.tv_number)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        var binding : ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
         //ViewModel 객체 생성
         mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
-
-        //LiveData(number)에 ViewModel 연결
-        mainViewModel.number.observe(this, Observer {
-            Log.d(TAG, "viewModel의 number 관찰중... : $it")
-            tvNumber.text = it.toString()
-        })
-
-        btnPlus.setOnClickListener(this)
-        btnMinus.setOnClickListener(this)
-        btnReset.setOnClickListener(this)
+        binding.viewmodel = mainViewModel
+        binding.lifecycleOwner = this
     }
-
-    override fun onClick(view: View?) {
-        when(view){
-            btnPlus -> mainViewModel.plusNumber()
-            btnMinus-> mainViewModel.minusNumber()
-            btnReset -> mainViewModel.resetNumber()
-        }
-    }
-
 }

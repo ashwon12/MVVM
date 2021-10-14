@@ -1,14 +1,13 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'kotlin-kapt'
 }
 
 android {
     compileSdk 31
 
-    buildFeatures {
-        dataBinding true
+    dataBinding {
+        enabled = true
     }
 
     defaultConfig {
